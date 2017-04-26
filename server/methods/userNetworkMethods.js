@@ -19,5 +19,20 @@ Meteor.methods({
                 "seen":false
             })
         }
+    },
+     'addComment': function(comentario){
+            /*Me paso un objeto porque no me permite enviar más de un parametro string*/
+        var currentUserId = Meteor.userId();
+        if(currentUserId){
+            Comments.insert({
+                idStory: comentario.idStory,
+                comment: comentario.comment,
+                createdBy: currentUserId
+            });
+        }
     }
-})
+
+});
+
+
+

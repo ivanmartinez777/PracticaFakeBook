@@ -8,6 +8,10 @@ Meteor.publish("userData", function(username){
     return Meteor.users.find({username:username});
 })
 
+Meteor.publish("StoryComentarios", function(){
+    return Comments.find();
+});
+
 Meteor.publish("userNotifications", function(userId){
     return UserEdges.find({"requestee": userId, "seen":false});
 })

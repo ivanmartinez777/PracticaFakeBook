@@ -26,7 +26,8 @@ Template.topnav.events({
 
 Template.topnav.helpers({
     fullname:function(user){
-        return user ? user.profile.name.first + " " + user.profile.name.last : null;
+        return user ? user.profile.firstname + " " + user.profile.lastname : null;
+        //cambiamos user.profile.name.first por user.profile.firstname
     },
     friendRequestCount:function(){
         var user = Meteor.user();

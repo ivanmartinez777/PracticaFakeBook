@@ -22,13 +22,15 @@ Template.profileDetails.onCreated(function(){
         }
     })
 
-})
+}),
+
+ 
 
 Template.profileDetails.helpers({
     fullname:function(){
         var username = Router.current().params.username;
         var user = Meteor.users.findOne({username:username});
-        return user ? user.profile.name.first + " " + user.profile.name.last : null;
+        return user ? user.profile.firstname + " " + user.profile.lastname : null;
     },
     profilePicture:function() {
         var username = Router.current().params.username;
@@ -71,7 +73,20 @@ Template.profileDetails.helpers({
     storyCount:function(){
         var username = Router.current().params.username;
         var user = Meteor.users.findOne({username:username});
+    },
+    //esta función devuelve true si el usuario está en su página 
+    //si es así, el botón addFriend cambia por uno de edit profile
+       ItsMe: function(){
+    var profileUser = Meteor.users.findOne({username:Router.current().params.username});
+    var currentUser = Meteor.user();
+    var yo = false;
+    if (currentUser._id  === profileUser._id){
+      yo = true;
     }
+    console.log("prueba");
+    return yo;
+    
+},
 })
 
 
@@ -85,5 +100,7 @@ Template.profileDetails.events({
             });
         }
 
-    }
+    },
+    
+
 })

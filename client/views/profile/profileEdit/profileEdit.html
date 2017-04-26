@@ -1,0 +1,51 @@
+<template name="profileEdit">
+    <div class="wrapper">
+        <div class="box">
+            <div class="row row-offcanvas row-offcanvas-left">
+                <!-- sidebar -->
+                {{>sidebar}}
+                <!-- /sidebar -->
+                <!-- main right col -->
+                <div class="column col-sm-10 col-xs-11" id="main">
+                    <!-- top nav -->
+                    {{>topnav}}
+                    <!-- /top nav -->
+                    <div class="padding">
+                        <div class="full col-sm-9">
+                            <!-- content -->
+                            <div class="row">
+                                {{>profileDetails}}
+                                <!-- main col right -->
+                                <div class="col-sm-7">
+
+                                    <form name="editorProfile">
+                                        <label for="firstName">Nombre</label>  
+                                        <input class="editProfile" name="firstName" type="text" value={{completarPerfil.firstname}}><br>
+                                        <label for="firstName">Apellido</label>  
+                                        <input class="editProfile" name="lastName" type="text" value={{completarPerfil.lastname}}><br>
+                                        <label for="gender">Género</label>  
+                                        <input class="editProfile" name="gender" type="text" value={{completarPerfil.gender}} ><br>
+                                        <h3>Localización</h3>
+                                        <label for="street">Calle</label>  
+                                        <input class="editProfile" name="street" type="text" value={{completarPerfil.location.street}}><br>
+                                        <label for="city">Ciudad</label>  
+                                        <input class="editProfile" name="city" type="text" value={{completarPerfil.location.city}}><br>
+                                        <label for="state">Estado</label>  
+                                        <input class="editProfile" name="state" type="text" value={{completarPerfil.location.state}}><br>
+                                        <label for="zip">Código Postal</label>  
+                                        <input class="editProfile" name="zip" type="text" value={{completarPerfil.location.zip}}><br>
+                                        <input type="submit" value="aceptar">
+                                    </form>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /main -->
+            </div>
+        </div>
+    </div>
+    {{>modal}}
+</template>

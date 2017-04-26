@@ -27,9 +27,30 @@
                     <div class="input-group-btn">
                         <button class="btn btn-default like">+1</button>
                     </div>
-                    <input class="form-control" placeholder="Add a comment.." type="text">
+                    <input class="form-control" placeholder="Add a comment.." name="comment" type="text">
+                    <button  name="comentar">Comentar</button>
                 </div>
-            </form>
+             </form>
+            {{#if comentarios}}
+                <h3>Comentarios</h3>
+             {{#each comentarios}}
+                 <div class="panel panel-default">
+                    <div class="panel-heading">
+                        
+                            <h4> <a href="/profile/{{UserUsername}}"><img src="{{UserPicMed}}" width="28px;" height="28px;"> {{UserUsername}} </a></h4>
+                            <h6>{{createdAt}}</h6>
+                        
+                        
+                      
+                    </div>
+                    <div class="panel-body">
+                        <h5>{{Cuerpo}}</h5>
+                        <div class="clearfix"></div>
+                       
+                           </div>
+                    </div>
+             {{/each}}
+            {{/if}} 
         </div>
     </div>
 </template>

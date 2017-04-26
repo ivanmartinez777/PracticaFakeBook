@@ -3,7 +3,7 @@ Template.modal.events({
         e.preventDefault();
         var profileUser = Meteor.user();
         var currentUser = Meteor.user();
-        var story = $('textarea[name="new-post"]').val();
+       var story = $('textarea[name="newest-post"]').val();
         if(story.length) {
             Stories.insert({
                 createdBy: currentUser._id,
@@ -11,18 +11,20 @@ Template.modal.events({
                 userImage: currentUser.profile.picture.thumbnail,
                 storyImage: null,
                 storyText: story,
-                creatorName: currentUser.profile.name.first + " " + currentUser.profile.name.last,
-                creatorUsername: currentUser.profile.username,
+                creatorName: currentUser.profile.firstname + " " + currentUser.profile.lastname,
+                creatorUsername: currentUser.username,
                 creatorThumbnail: currentUser.profile.picture.thumbnail,
-                createdForName: profileUser.profile.name.first + " " + profileUser.profile.name.last,
-                createdForUsername: profileUser.profile.username,
+                createdForName: profileUser.profile.firstname + " " + profileUser.profile.lastname,
+                createdForUsername: profileUser.username,
                 createdForThumbnail: profileUser.profile.picture.thumbnail,
                 likes: [],
                 createdAt: new Date(),
                 comments: []
             });
+            console.log(story);
             $('textarea[name="new-post"]').val("");
         }
 
     }
+
 })

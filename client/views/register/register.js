@@ -20,8 +20,28 @@ Template.register.events({
             if(!firstname.length) throw new Meteor.Error("need name", "You must input your first name");
             if(!lastname.length) throw new Meteor.Error("need lastname", "You must input your last name");
             if(password.length < 6) throw new Meteor.Error("password length", "Your password must be at least 6 characters in length");
-            Accounts.createUser({username: username, email: email, password: password,
-                                    profile: {firstname: firstname, lastname: lastname}}, function(err, id){
+            Accounts.createUser({username: username,
+                                 email: email,
+                                  password: password,
+                                    profile: 
+                                        {firstname: firstname,
+                                         lastname: lastname,
+                                         username: firstname + lastname,
+                                         location : {
+                                             street : "",
+                                            city : "",
+                                             state : "",
+                                             zip : 0
+                                                },
+                                            picture : {
+                                             "large" : "/home/ivanmartinez777/Documentos/2ºDAW/M3Programación/UF3/meteor-facebook/public/img/default.png",
+                                              "medium" : "/home/ivanmartinez777/Documentos/2ºDAW/M3Programación/UF3/meteor-facebook/public/img/default.png",
+                                            "thumbnail" : "/home/ivanmartinez777/Documentos/2ºDAW/M3Programación/UF3/meteor-facebook/public/img/default.png"
+                                        },
+                                            pendingFriends:[],
+                                            confirmedFriends:[]}},
+
+                                         function(err, id){
                 if(!err) {
                     Router.go("/")
                 }

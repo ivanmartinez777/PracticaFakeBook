@@ -3,15 +3,44 @@ Template.story.events({
         e.preventDefault();
         var story = Blaze.getData(e.currentTarget);
         var liker = Meteor.user();
-        var likeData = {name: liker.profile.name.first + " " + liker.profile.name.last};
+        var likeData = {name: liker.profile.firstname + " " + liker.profile.lastname};
         var alreadyLiked = _.findWhere(story.likes, likeData);
         if(!alreadyLiked){
             Stories.update({_id: story._id}, {$push:{likes: likeData}});
         } else {
             Stories.update({_id: story._id}, {$pull:{likes:likeData}});
         }
+    },
+
+    'click [name=comentar]': function(event){
+        event.preventDefault();
+
+    var comment = $('[name="comment"]').val();
+    var user = Meteor.user();
+  
+    var idStory = Blaze.getData(event.currentTarget)._id;
+    
+  
+
+    Stories.update({_id: idStory},{$push:{comments:{
+        UserId: user._id,
+        Cuerpo: comment,
+        createdAt: new Date(),
+        UserPicMed: user.profile.picture.medium,
+        UserPicThumb: user.profile.picture.thumbnail,
+        UserUsername: user.profile.username
+        }
+    }});
+    console.log("introducido nuevo comentario");
+   /*//Creo un objeto Comentario, porque no me es posible mandar más de un parámetro String
+    Meteor.call('addComment', comentario);*/
+
+   
+    $('[name="comment"]').val("");
+
     }
 })
+
 
 Template.story.helpers({
     status:function(){
@@ -47,5 +76,17 @@ Template.story.helpers({
             return likes[0].name + ", " + likes[1].name + ", " + likes[2].name + " and " + correctLength + correctOther;
         }
 
+    },
+
+    comentarios:function(){
+        var storyId = this._id;
+        console.log(storyId);
+        var comentario = Stories.findOne({_id: storyId});
+    
+        return comentario.comments;
     }
+
 })
+
+
+
