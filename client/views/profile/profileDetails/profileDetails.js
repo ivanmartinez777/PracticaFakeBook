@@ -9,6 +9,8 @@ Template.profileDetails.onCreated(function(){
                 var user = Meteor.users.findOne({username: username});
                 self.subscribe("userFriendCount", user._id);
                 self.subscribe("userNewFriends", user._id);
+                 Meteor.subscribe("userList");
+                
             }
         });
     })
@@ -76,17 +78,26 @@ Template.profileDetails.helpers({
     },
     //esta función devuelve true si el usuario está en su página 
     //si es así, el botón addFriend cambia por uno de edit profile
-       ItsMe: function(){
+    ItsMe: function(){
     var profileUser = Meteor.users.findOne({username:Router.current().params.username});
     var currentUser = Meteor.user();
     var yo = false;
     if (currentUser._id  === profileUser._id){
       yo = true;
     }
-    console.log("prueba");
     return yo;
-    
 },
+
+    personas:function(){
+        
+
+ 
+      var personas = Meteor.users.find();
+    
+
+
+    return personas;
+}
 })
 
 

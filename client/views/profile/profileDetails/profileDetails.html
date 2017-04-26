@@ -4,7 +4,7 @@
     <div class="col-sm-5">
 
          <div class="panel panel-default">
-           <div class="panel-thumbnail"><img src="{{profilePicture}}" class="img-responsive"></div>
+           <div class="panel-thumbnail"><img src="{{profilePicture}}" class="img-responsive" ></div>
            <div class="panel-body">
              <p class="lead">{{fullname}}</p>
              <p>{{friendCount}} Friends</p>
@@ -34,9 +34,14 @@
 
 
          <div class="panel panel-default">
-           <div class="panel-heading"><h4>Some Header</h4></div>
+           <div class="panel-heading"><h4>Personas</h4></div>
            <div class="panel-body">
-               Fill this with whatever you want
+               {{#each personas}}
+                  <ul>
+                     <li>
+                       <a href="/profile/{{this.profile.username}}"><img src="{{profile.picture.thumbnail}}" height="40px" width="40px"/>{{profile.username}}</a></li>
+                  </ul>
+               {{/each}}
             </div>
          </div>
 

@@ -12,6 +12,10 @@ Meteor.publish("StoryComentarios", function(){
     return Comments.find();
 });
 
+Meteor.publish("userList", function () {
+           return Meteor.users.find();
+    });
+
 Meteor.publish("userNotifications", function(userId){
     return UserEdges.find({"requestee": userId, "seen":false});
 })

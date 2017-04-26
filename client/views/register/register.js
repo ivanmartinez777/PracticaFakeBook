@@ -31,12 +31,12 @@ Template.register.events({
                                              street : "",
                                             city : "",
                                              state : "",
-                                             zip : 0
+                                             zip : ""
                                                 },
                                             picture : {
-                                             "large" : "/home/ivanmartinez777/Documentos/2ºDAW/M3Programación/UF3/meteor-facebook/public/img/default.png",
-                                              "medium" : "/home/ivanmartinez777/Documentos/2ºDAW/M3Programación/UF3/meteor-facebook/public/img/default.png",
-                                            "thumbnail" : "/home/ivanmartinez777/Documentos/2ºDAW/M3Programación/UF3/meteor-facebook/public/img/default.png"
+                                             "large" : "http://mundogeek.net/wp-content/avatar-mario.jpg",
+                                              "medium" : "http://mundogeek.net/wp-content/avatar-mario.jpg",
+                                            "thumbnail" : "http://mundogeek.net/wp-content/avatar-mario.jpg"
                                         },
                                             pendingFriends:[],
                                             confirmedFriends:[]}},

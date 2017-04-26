@@ -27,6 +27,8 @@ Template.profileEdit.events({
      var city = $('[name="city"]').val();
      var state = $('[name="state"]').val();
      var zip = $('[name="zip"]').val();
+     var pic = $('[name="pic"]').val();
+
     
     Meteor.users.update({"_id": userId},
     	{$set:
@@ -38,6 +40,10 @@ Template.profileEdit.events({
                 "profile.location.city":city,
                 "profile.location.state":state,
                 "profile.location.zip":zip,
+                "profile.picture.large": pic,
+                "profile.picture.medium": pic,
+                "profile.picture.thumbnail": pic,
+
     				
     		}
     	});
