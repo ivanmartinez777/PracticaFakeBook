@@ -14,11 +14,15 @@ Template.story.events({
 
     'click [name=comentar]': function(event){
         event.preventDefault();
-
-    var comment = $('[name="comment"]').val();
-    var user = Meteor.user();
-  
     var idStory = Blaze.getData(event.currentTarget)._id;
+    var comment = $('[name="'+idStory+'comment"]').val();
+    var user = Meteor.user();
+  /*
+    Tenia el problema de que cuando comentaba en otro post, ya no podía 
+    comentar en el anterior, he solucionado el problema con el helper
+    ident y añadiendo la id al input comment
+  */
+    
     
   
 
@@ -36,7 +40,7 @@ Template.story.events({
     Meteor.call('addComment', comentario);*/
 
    
-    $('[name="comment"]').val("");
+    $('[name="'+idStory+'comment"]').val("");
 
     }
 })
@@ -77,6 +81,14 @@ Template.story.helpers({
         }
 
     },
+
+     ident:function(){
+        var storyId = this._id;
+        
+    
+        return storyId;
+    },
+
 
     comentarios:function(){
         var storyId = this._id;
