@@ -29,6 +29,13 @@ Template.profileEdit.events({
      var zip = $('[name="zip"]').val();
      var pic = $('[name="pic"]').val();
 
+     if (pic === ""){
+     	pic = currentUser.profile.picture.medium;
+     }
+
+
+
+
     
     Meteor.users.update({"_id": userId},
     	{$set:
