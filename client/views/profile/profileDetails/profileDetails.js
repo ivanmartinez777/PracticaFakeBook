@@ -87,8 +87,28 @@ Template.profileDetails.helpers({
     }
     return yo;
 },
+     amigo: function(){
+    var profileUser = Meteor.users.findOne({username:Router.current().params.username});
+    console.log(profileUser.profile.username);
+    var profileUserId = profileUser._id;
+    var currentUser = Meteor.user();
 
-    personas:function(){
+
+    var amigo = UserEdges.findOne({$or:[{$and: [{requester: profileUserId},{requestee: currentUser._id}, {status:"accepted"}]}
+        ,{$and:[{requester: currentUser._id},{requestee: profileUserId},{status:"accepted"}]}]});
+  
+    var boton = false;
+    
+    if (typeof amigo !== "undefined"){
+        boton = true;
+    }
+
+
+    return boton;
+
+    
+},
+ personas:function(){
         
 
  
@@ -98,6 +118,8 @@ Template.profileDetails.helpers({
 
     return personas;
 }
+
+
 })
 
 
@@ -111,7 +133,5 @@ Template.profileDetails.events({
             });
         }
 
-    },
-    
-
+    }
 })

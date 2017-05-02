@@ -22,9 +22,6 @@ Template.story.events({
     comentar en el anterior, he solucionado el problema con el helper
     ident y añadiendo la id al input comment
   */
-    
-    
-  
 
     Stories.update({_id: idStory},{$push:{comments:{
         UserId: user._id,
@@ -92,7 +89,6 @@ Template.story.helpers({
 
     comentarios:function(){
         var storyId = this._id;
-        console.log(storyId);
         var comentario = Stories.findOne({_id: storyId});
     
         return comentario.comments;

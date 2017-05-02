@@ -8,12 +8,17 @@
            <div class="panel-body">
              <p class="lead">{{fullname}}</p>
              <p>{{friendCount}} Friends</p>
-            
-             {{#if ItsMe }}
+
+             {{#if ItsMe}}
                 <p><button class="edit-profile"><a href="/profileEdit/{{currentUser.username}}">Edita tu perfil</a></button></p>
+              {{else}}
+             {{#if amigo }}
+                <label>Amigo</label>
              {{else }}
                 <p><button class="btn btn-primary add-friend">Add Friend</button></p>
              {{/if}}
+              {{/if}}
+
           
              <p>
                 {{#each newFriends}}
