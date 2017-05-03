@@ -181,7 +181,7 @@ Template.profileDetails.helpers({
 
 Template.profileDetails.events({
     /**
- * @summary Busca al usuario que corresponde al usuario obtenido por el parámetro y devuelve su nombre completo.
+ * @summary Obtiene la id de usuario del propietario del perfil y la id del usuario conectado y la pasa por parametro al método addFriend
  * @locus Methods, Notifications
  * @Hurl#add-friend
  * @Fire Methods#addfriend
