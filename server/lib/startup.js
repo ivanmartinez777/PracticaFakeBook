@@ -1,5 +1,5 @@
 Meteor.startup(function(){
-   var users = Meteor.users.find().count();
+   /*var users = Meteor.users.find().count();
     if(!users) {
         for(var i = 0; i < 100; i++){
             HTTP.get("http://api.randomuser.me/", function(err,res){
@@ -25,6 +25,6 @@ Meteor.startup(function(){
                 Accounts.createUser(user);
             })
         }
-    }
+    }*/
 
 })

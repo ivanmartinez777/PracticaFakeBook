@@ -1,4 +1,8 @@
 
+/**
+*@isHelper true 
+*/
+
 Template.profileEdit.helpers({
     'completarPerfil': function(){
 
@@ -8,9 +12,6 @@ Template.profileEdit.helpers({
     }
 });
 
-/*Este helper hace una copia del profile y lo
-envia al template. Este, a su vez lo inserta en value
-*/
 
 
 Template.profileEdit.events({
@@ -32,10 +33,6 @@ Template.profileEdit.events({
      if (pic === ""){
      	pic = currentUser.profile.picture.medium;
      }
-
-
-
-
     
     Meteor.users.update({"_id": userId},
     	{$set:
@@ -51,27 +48,9 @@ Template.profileEdit.events({
                 "profile.picture.medium": pic,
                 "profile.picture.thumbnail": pic,
 
-    				
     		}
     	});
-												}
-    					
+	}
 
-  
-    
-							});
+});
 
-/*
-	Una vez insertado los valores en el template por
-	el helper de la parte superior, creamos este event
-	que captura en variables todos los valores de los
-	input box y actualiza los datos en la base de datos
-
-	IMPORTANTE: para poder acceder a la base de datos
-	de users, hay que hacerlo de la forma en la  que lo he 
-	hecho en event de arriba.
-
-    IMPORTANTE: A la hora de hacer un update $set, es importante que 
-    si vamos a actualizar un atributo que está entre llaves, o lo actualizamos
-    todo o bien lo hacemos con puntos, como lo hemos hecho en la parte de arriba.
-*/
